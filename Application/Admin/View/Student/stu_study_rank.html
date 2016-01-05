@@ -1,0 +1,34 @@
+
+
+
+
+
+
+
+    <div class="table-responsive my-notice-table">
+		<table class="table table-bordered table-hover">
+		<thead>
+			<tr class="info">
+				<td>学期</td>
+				<td>智育排名</td>
+				<td>智育百分比</td>
+				<td>德育排名</td>
+				<td>德育百分比</td>
+				<td>不及格门数</td>
+			</tr>
+		</thead>
+		<tbody>
+			 <volist name="xy" id="data">
+				   <tr>
+			            <td>{$data.xq}</td>
+			            <td>{$data.zypm}</td>
+			            <td>{$data.zybfb}</td>
+			            <td>{$data.dypm}</td>
+			            <td>{$data.dybfb}</td>
+			            <td>{$data.bjg}</td>
+		           </tr>
+	          </volist>
+        </tbody>
+        </table>
+	</div>
+

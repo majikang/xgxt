@@ -1,0 +1,86 @@
+<extend name="Public/base" />
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>权限管理</h2>
+	</div>
+
+    <div class="tools auth-botton">
+    	<div class="btn-group">
+		    <button type="button" class="btn btn-default">
+		    	<a id="add-group" href="{:U('createGroup')}">新 增</a>
+		    </button>
+		    <button type="button" class="btn btn-default">
+		    	<a url="{:U('changestatus?method=resumeGroup')}" class="ajax-post" target-form="ids" >启 用</a>
+		    </button>
+		    <button type="button" class="btn btn-default">
+		    	 <a url="{:U('changestatus?method=forbidGroup')}" class="ajax-post" target-form="ids" >禁 用</a>
+		    </button>
+		    <button type="button" class="btn btn-default">
+		    	<a url="{:U('changestatus?method=deleteGroup')}" class="ajax-post confirm" target-form="ids" >删 除</a>
+		    </button>
+		</div>
+		
+		<!--原来按钮
+        <a id="add-group" class="btn" href="{:U('createGroup')}">新 增</a>
+        <a url="{:U('changestatus?method=resumeGroup')}" class="btn ajax-post" target-form="ids" >启 用</a>
+        <a url="{:U('changestatus?method=forbidGroup')}" class="btn ajax-post" target-form="ids" >禁 用</a>
+        <a url="{:U('changestatus?method=deleteGroup')}" class="btn ajax-post confirm" target-form="ids" >删 除</a>
+        -->
+    </div>
+    <br/>
+
+	<!-- 数据列表 -->
+	<div class="table-responsive my-notice-table">
+	<table class="table table-bordered table-hover">
+    <tdead>
+        <tr class="info">
+		<td class="row-selected row-selected"><input class="check-all" type="checkbox"/></td>
+		<td class="">用户角色</td>
+		<td class="">描述</td>
+		<td class="">授权</td>
+		<td class="">状态</td>
+		<td class="">操作</td>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+			<td><a href="{:U('AuthManager/editgroup?id='.$vo['id'])}">{$vo.title}</a> </td>
+			<td><span>{:mb_strimwidth($vo['description'],0,60,"...","utf-8")}</span></td>
+
+
+			<td><a href="{:U('AuthManager/access?group_name='.$vo['title'].'&group_id='.$vo['id'])}" >访问授权</a>
+			<a href="{:U('AuthManager/user?group_name='.$vo['title'].'&group_id='.$vo['id'])}" >成员授权</a>
+			</td>
+			<td>{$vo.status_text}</td>
+			<td>
+				<eq name="vo.status" value="1">
+				<button class="btn btn-default"><a href="{:U('AuthManager/changeStatus?method=forbidGroup&id='.$vo['id'])}" class="ajax-get">禁用</a></button>
+				<else/>
+				<button class="btn btn-default"><a href="{:U('AuthManager/changeStatus?method=resumeGroup&id='.$vo['id'])}" class="ajax-get">启用</a></button>
+				</eq>
+				<button class="btn btn-default"><a href="{:U('AuthManager/changeStatus?method=deleteGroup&id='.$vo['id'])}" class="confirm ajax-get">删除</a></button>
+            </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+</script>
+</block>

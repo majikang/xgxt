@@ -1,0 +1,80 @@
+<extend name="Public/base" />
+<!-- 管理员用户组新增和编辑页面 -->
+<block name="body">
+	<div class="main-title">
+		<h2>{$auth_group['id']?'编辑':'新增'}角色</h2>
+	</div>
+
+    <form action="{:U('AuthManager/writeGroup')}" enctype="application/x-www-form-urlencoded" method="POST"
+            class="form-horizontal">
+        <div class="form-item">
+            <label for="auth-title" class="item-label">角色名称</label>
+            <div class="controls">
+                <input id="auth-title" type="text" name="title" class="text input-large" value="{$auth_group.title}"/>
+            </div>
+        </div>
+        <div class="form-item">
+            <label for="auth-description" class="item-label">角色描述</label>
+            <div class="controls">
+                <label class="textarea input-large"><textarea id="auth-description" type="text" name="description">{$auth_group.description}</textarea></label>
+            </div>
+        </div>
+        <div class="form-item">
+            <label for="auth-description" class="item-label">角色等级</label>
+            <div class="controls">
+                <if condition='$auth_group.id eq Null'>
+                    <select name="level">
+                        <option value="1">校级领导</option>
+                        <option value="2">院级领导</option>
+                        <option value="3">班级领导</option>
+                        <option value="4">学生</option> 
+                    </select>
+                <else />
+                    <if condition='$auth_group.level eq 1'>
+                         <select name="level">
+                            <option value="1" selected>校级领导</option>
+                            <option value="2">院级领导</option>
+                            <option value="3">班级领导</option>
+                            <option value="4">学生</option> 
+                        </select>
+                    </if>
+                    <if condition='$auth_group.level eq 2'>
+                         <select name="level">
+                            <option value="1">校级领导</option>
+                            <option value="2" selected>院级领导</option>
+                            <option value="3">班级领导</option>
+                            <option value="4">学生</option> 
+                        </select>
+                    </if>
+                    <if condition='$auth_group.level eq 3'>
+                         <select name="level">
+                            <option value="1">校级领导</option>
+                            <option value="2">院级领导</option>
+                            <option value="3" selected>班级领导</option>
+                            <option value="4">学生</option> 
+                        </select>
+                    </if>
+                    <if condition='$auth_group.level eq 4'>
+                         <select name="level">
+                            <option value="1">校级领导</option>
+                            <option value="2">院级领导</option>
+                            <option value="3">班级领导</option>
+                            <option value="4" selected>学生</option> 
+                        </select>
+                    </if>
+                </if>
+            </div>
+        </div>
+        <div class="form-item">
+            <input type="hidden" name="id" value="{$auth_group.id}" />
+            <button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+<block name="script">
+<script type="text/javascript" charset="utf-8">
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+</script>
+</block>

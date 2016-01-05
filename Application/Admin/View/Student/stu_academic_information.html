@@ -1,0 +1,147 @@
+<div role="tabpanel" class="tab-pane" id="stu_edit">
+		    			<div class="form-group">
+								<label>照片</label>
+									<div class="input-group">
+			  						<img src="__PHONE__/{$list.xh}.jpg" width="80px">
+								</div>
+							</div>
+							<br/>
+							<br/>
+							<div>
+								<label>学号</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-user"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.xh}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>校园卡号</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.uid}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>身份证</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-phone"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.sfzh}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>学生姓名</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.title}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>姓名拼音</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-user"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.name}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>曾用名</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-phone"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.cym}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>入学年月</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.rxny}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>学生类别</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{:get_student_code($list['stulbm'],'xslb','TabCodeSys')}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>学制</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.xz}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>预计毕业年度</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.xbybynd}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>学籍状况</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{:get_student_code($list['xbxjzt'],'xbxjzt','TabCodeSys')}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>校区</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{:get_student_code($list['xbxq'],'_xbxq')}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>院系</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.ystuh|get_student_code}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>专业</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{:get_student_code($list['zyklm'],'_bzkzy')}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>年级</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.nj}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>班级</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.category_id|get_class_code}">
+								</div>
+							</div>
+							<br/>
+							<div>
+								<label>生源地</label>
+								<div class="input-group">
+			  						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+			  						<input type="text" class="form-control" disabled="disabled" value="{$list.xbsyddm}">
+								</div>
+							</div>
+		    		</div>
+		    		<br/>
+		    		<button class="btn btn-default btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>

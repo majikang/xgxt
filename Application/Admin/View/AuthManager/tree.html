@@ -1,0 +1,36 @@
+<i id="norequirejs"></i>
+<volist name="tree" id="list">
+	<if condition="$list.pid eq 0">
+		<tr class="info ">
+        <td class="authMngr-fahr-checkbox">
+	<else/>
+		<tr class="s{$list.pid}">
+        <td class="authMngr-son-checkbox">
+	</if>
+    	<input class="cate_id" type="checkbox" name="cid[]" value="{$list.id}">
+    </td>
+    <if condition="$list.pid eq 0">
+	    <td class="f{$list.id}">
+	<else/>    	
+		<td>
+	</if>
+	        <strong>{$list.title}</strong>
+	    </td>
+    </tr>
+    <notempty name="list['_']">
+    	{:R('AuthManager/tree', array($list['_']))}
+    </notempty>
+            <script type="text/javascript" src="__JS__/lib/jquery-2.1.1.min.js"></script>
+			<script type="text/javascript">
+			$(function(){ 
+			var id={$list.id};
+					
+			$(".f"+id).on("click",function(){ 
+				$(".s"+id).slideToggle();
+		});
+
+
+			});
+				
+			</script>	
+</volist>

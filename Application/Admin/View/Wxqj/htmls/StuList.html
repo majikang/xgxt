@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>查看结果</title>
+	<meta charset='utf-8'>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/style.css">
+</head>
+<body class="wechatHoli">
+	<div class="panel panel-primary my-wechatHoli-content">
+		<div class="panel-heading">
+			请假审核结果
+			<a href="javascript:history.back()" class="btn btn-primary btn-xs my-wechatHoli-returnBtn" role="button">返回</a>
+		</div>
+		<table class="table">
+			<tbody>
+			<if condition="$list neq null" >
+			<volist name="list" id="data">
+				<tr class=" <if condition="$data['wxqj_shyj'] eq 1">warning</if>">
+					<td><a href="{:U('StuDetail')}">{$data['wxqj_sqsj']}</a></td>
+					<td>
+						<?php
+						switch ($data['wxqj_shyj']) {
+							case '0':
+								echo "未处理";
+								break;
+							case '1':
+								echo "不同意";
+								break;
+							case '2':
+								echo "同意";
+								break;	
+						}
+						?>
+					</td>
+
+				</tr>
+			</volist>
+			<else />
+			<div style="color:red;text-align:center">你还没有请假！</div>
+			</if>
+			</tbody>
+		</table>
+	</div>
+</body>

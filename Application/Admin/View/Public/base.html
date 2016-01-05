@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{$meta_title}|江苏师范大学</title>
+    <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="__CSS__/bootstrap.min.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/behavior.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+    <link rel="stylesheet" type="text/css" href="__CSS__/plugin.css" media="all">
+	<!--<script type="text/javascript" src="__JS__/lib/jquery-2.1.1.min.js"></script>-->
+	<!--<script type="text/javascript" src="__JS__/ajaxapi.js"></script>-->
+     <!--[if lt IE 9]>
+    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <![endif]--><!--[if gte IE 9]><!-->
+    <!--<![endif]-->
+    <block name="style"></block>
+</head>
+<body>
+    <!-- 头部 -->
+    	<!-- Navbar -->
+		<nav class="navbar navbar-default my-navbar" id="my-navbar" role="navigation">
+			<!-- container-fluid -->
+			<div class="container-fluid">	
+				<!-- navbar-header -->
+				<div class="navbar-header">
+					<button class="navbar-toggle collapsed my-navbar-mobile-menu" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" type="button">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="glyphicon glyphicon-th my-navbar-mobile-menu-glyphicon"></span>
+					</button>
+					<a class="navbar-brand my-navbar-brand" href="#">
+						<span class="my-navbar-brand-title">江苏师范大学</span>
+					</a>
+				</div>
+				<!-- 主导航 -->
+			       <div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+					<!-- my-navbar-btn的active是自己写的，切记 -->	
+			            <volist name="__MENU__.main" id="menu">
+							<a class="btn btn-xs my-navbar-btn" href="{$menu.url|U}">
+								<span class="{$menu.icon}"></span> 
+								<p class="text-center my-navbar-btn-title">{$menu.title}</p>
+							</a>
+			            </volist>
+			        </ul>
+				</div>
+			</div>
+			<!-- container-fluid End -->
+		</nav>	
+		<!-- Navbar End-->
+    <!-- /头部 -->
+    <div class="main-container" id="main-container">
+
+    	<div class="my-sidebar" id="my-sidebar">
+    	<div id="subnav" class="subnav">
+    		<ul class="list-group" >
+				<li class="list-group-item text-center hidden-xs my-sidebar-userinfo">
+					<span class="my-sidebar-userinfo-title">当前用户：<em title="{:session('user_auth.username')}">{:session('user_auth.username')}</em></span>
+				</li>
+				<!-- header Start-->
+				<li class="list-group-item text-center my-sidebar-header">
+						<span class="my-sidebar-header-title">办公系统</span>
+				</li>
+				<!-- header End-->
+				<volist name="__MENU__.child" id="sub_menu">
+                    <!-- 子导航 -->
+                    <notempty name="sub_menu">
+	                    <li class="list-group-item text-center my-sidebar-btn">
+						   		<span class="{$style}"></span>
+						   		<notempty name="key">
+						   			<span class="{:next(explode(',',$key))}">{:current(explode(',',$key))}</span>
+						   		</notempty>
+						</li>
+						<ul class="list-group my-sidebar-sub">
+							<volist name="sub_menu" id="menu">
+								<li class="list-group-item text-center my-sidebar-subbtn" data-index="1">
+									<a href="{$menu.url|U}">
+										<span class="glyphicon glyphicon-plus-sign my-sidebar-subbtn-glyphicon"></span>
+										<span class="my-sidebar-subbtn-title">{$menu.title}</span>	
+									</a>		
+								</li>
+							</volist>
+						</ul>
+					</notempty>
+                </volist> 
+            </ul>
+            </div>
+    	</div>
+    	<div class="main-content" id="main-content">
+    	
+    	<div class="content" id="content">
+	    	<div id="top-alert" class="fixed alert alert-error" style="display: none;">
+	        	<button class="close fixed" style="margin-top: 4px;">&times;</button>
+	        <div class="alert-content">这是内容</div>
+    </div>
+    		<block name="body"></block>
+    	</div>	
+    	</div>
+    </div>
+
+    
+    
+    
+    
+    <script src="__JS__/lib/require.js" data-main="__JS__/common"></script>
+    <block name="script"> </block>
+    
+</body>
+</html>
+

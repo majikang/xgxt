@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<!--全部开始-->
+	<div class="tab-wrap">
+		<!-- 标签页头 -->
+		<form action="{:U('stu_save','id='.$list['id'])}" method="post" class="form-inline form-horizontal" role="form">
+		<include file="button" />
+			<!--内容开始-->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane" id="stu_rewa">
+			  		<include file="stu_reward_punishment" />
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="stu_sskh">
+			  		<include file="stu_sskh_information" />
+			    </div>
+				<div role="tabpanel" class="tab-pane" id="stu_work">
+				  	<include file="stu_work" />
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="stu_stud">
+				    <include file="stu_study_rank" />
+				</div>
+
+			    <div role="tabpanel" class="tab-pane" id="stu_cont">
+			  	    <div class="data-table">
+					    <form class="form-inline" role="form">
+						    <include file="stu_contact_information" />
+					    </form>
+				    </div>
+			    </div>
+
+			    <div role="tabpanel" class="tab-pane" id="stu_natu">
+				    <div class="data-table">
+				    	<form class="form-inline" role="form">
+								<include file="stu_nature_information" />
+				    	</form>
+				    </div>
+			    </div>
+				<!-- 数据表格 -->
+				<div role="tabpanel" class="tab-pane active" id="stu_acad">
+				    <div class="data-table">
+				    	<form class="form-inline" role="form">
+				    		<include file="stu_academic_information" />
+				    	</form>
+					</div>
+				</div>
+			</div>
+			<!-- 内容结束-->
+		</form>
+	</div>
+	<!-- 全部结束-->
+</block>

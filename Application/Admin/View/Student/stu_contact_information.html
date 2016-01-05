@@ -1,0 +1,114 @@
+
+			<div class="form-item">					
+				<label class="item-label">公寓</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-time"></span>
+						<select class="form-control" name="dormitory" disabled="disabled">
+	                        <foreach name="dormitory" item="xbgy">
+	                            <option value="{$xbgy.bh}" <eq name="xbgy.bh" value="$list['xbgydm']">selected</eq>>{$xbgy.mc}</option>
+	                        </foreach>
+						</select>
+				</div>
+			</div>
+			<br/>
+
+			<div>
+				<label>寝室号</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control"  name="xbqsh" value="{$list.xbqsh}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>家庭地址（县）</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control"  name="zzmm" value="{$list.zzmmm}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>家庭住址（村）</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control"  name="csrq" value="{:get_student_code($list['xbtxdzszddm'],'xzqh','TabCodeSys')}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>通讯地址（县）</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="zzmm" value="{$list.xbtxdzszddm}">
+				</div>
+			</div><!--省市区三级联动-->
+			<br/>
+			<div>
+				<label>村/街道号</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="xxm" value="{$list.xxm}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>邮政编码</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="zjxy" value="{$list.zjxy}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>电子信箱</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control"  name="dzxx" value="{$list.dzxx}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>主页地址</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="zydz" value="{$list.zydz}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>联系电话</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="lxdh" value="{$list.lxdh}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>手机号码</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="xbsjhm" value="{$list.xbsjhm}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>QQ号码</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="xbqq" value="{$list.xbqq}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>特长</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" name="tc" value="{$list.tc}">
+				</div>
+			</div>
+			<br/>
+			<button type="submit" class="btn btn-default submit-btn ajax-post" target-form="form-horizontal">修改</button>
+            <button class="btn btn-default btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+
+

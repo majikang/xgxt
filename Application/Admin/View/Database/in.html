@@ -1,0 +1,42 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>数据导入导出</h2>
+    </div>
+
+    <div class="data-table table-striped">
+       
+            <table>
+                <thead>
+                    <tr>
+                        
+                        <th>表名</th>
+                        <th width="120">数据量</th>
+                        <th width="120">数据大小</th>
+                        <th width="160">创建时间</th>
+                        <th width="120">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="list" id="table">
+                        <tr>
+                       		<form id="{$table.name}" method="post" action="{:U('in')}" enctype="multipart/form-data">
+                            <td>{$table.name}</td>
+                            <td>{$table.rows}</td>
+                            <td>{$table.data_length|format_bytes}</td>
+                            <td>{$table.create_time}</td>  
+                            <td class="action">
+                            <input type="file" name="excel">
+                			<input type="hidden" name="table" value = "{$table.name}">
+                			<input type="submit" value="导入表">
+                			<input type="button" value="导出表" onclick="window.location.href='{:U('out?tables='.$table['name'])}'">
+                			</form>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+    </div>
+</block>

@@ -1,0 +1,174 @@
+
+	<!-- 数据表格 -->
+ 
+        <!-- 列表 -->
+			<div>					
+				<label>性别</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" value="{:get_student_code($list['xbm'],'xb','TabCodeSys')}" name="xbm">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>民族</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="mzm" value="{:get_student_code($list['mzm'],'mz','TabCodeSys')}">
+				</div>
+			</div>
+			<br/>
+			<div class="form-item">
+				<div>					
+					<label class="item-label">政治面貌</label>
+					<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-time"></span>
+							<select class="form-control" name="zzmmm" disabled="disabled">
+	                            <foreach name="political" item="zzmm">
+                                	<option value="{$zzmm.bh}" <eq name="zzmm.bh" value="$list['zzmmm']">selected</eq>>{$zzmm.mc}</option>
+                            	</foreach>
+							</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>出生日期</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="csrq" value="{$list.csrq}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>籍贯</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="jgm" value="{$list.jgm}">
+				</div>
+			</div>
+			<br/>
+			<div class="form-item">
+				<div>					
+					<label class="item-label">血型</label>
+					<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-time"></span>
+							<select class="form-control" name="xxm" disabled="disabled">
+	                            <foreach name="blood_type" item="xx">
+                                <option value="{$xx.bh}" <eq name="xx.bh" value="$list['xxm']">selected</eq>>{$xx.mc}</option>
+                            </foreach>
+							</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="form-item">
+				<div>					
+					<label class="item-label">宗教信仰</label>
+					<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-time"></span>
+							<select class="form-control" name="zjxy" disabled="disabled">
+                            <foreach name="faith" item="zjxy">
+                                <option value="{$zjxy.bh}" <eq name="zjxy.bh" value="$list['zjxy']">selected</eq>>{$zjxy.mc}</option>
+                            </foreach>
+							</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>出生地</label><!-- 省市三级联动 -->
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="csdm" value="{:get_student_code($list['csdm'],'xzqh','TabCodeSys')}">
+				</div>
+			</div>
+			<br/>
+			<div>
+				<label>户口所在地</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" name="hkszd" value="{:get_student_code($list['hkszd'],'xzqh','TabCodeSys')}">
+				</div>
+			</div>
+			<br/>
+			<div class="form-item">
+				<div>					
+					<label class="item-label">户口性质</label>
+					<div class="input-group">
+							<span class="input-group-addon glyphicon glyphicon-time"></span>
+							<select class="form-control" name="xxm" disabled="disabled">
+	                            <option value="1" <eq name="$list['hkxzm']" value="1">selected</eq>>农业户口</option>
+	                            <option value="2" <eq name="$list['hkxzm']" value="2">selected</eq>>非农业户口</option>
+                            </foreach>
+							</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+	<!--		<div>
+				<label>乘坐区间</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" value="{$list.xbccqj}">
+				</div>
+			</div>
+			<br/>      -->
+			<div class="form-item">
+				<div>					
+					<label class="item-label">家庭特殊情况</label>
+					<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-time"></span>
+						<select class="form-control" name="xbxjzt" disabled="disabled">
+                            <option value="1" <eq name="$list['xbxjzt']" value="1">selected</eq>>无</option>
+                            <option value="2" <eq name="$list['xbxjzt']" value="2">selected</eq>>单亲</option>
+                            <option value="5" <eq name="$list['xbxjzt']" value="5">selected</eq>>父母离异</option>
+                            <option value="9" <eq name="$list['xbxjzt']" value="9">selected</eq>>孤儿</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+	<!--		<div>
+				<label>建档情况</label>
+				<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-text-height"></span>
+						<input type="text" class="form-control" disabled="disabled" value="{$list.}">
+				</div>
+			</div>
+			<br/>     -->
+			<div class="form-item">
+				<div>					
+					<label class="item-label">健康情况</label>
+					<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-time"></span>
+						<select class="form-control" name="jkzkm" disabled="disabled">
+                            <option value="1" <eq name="$list['jkzkm']" value="1">selected</eq>>健康或良好</option>
+                            <option value="2" <eq name="$list['jkzkm']" value="2">selected</eq>>一般或较弱</option>
+                            <option value="3" <eq name="$list['jkzkm']" value="5">selected</eq>>有慢性病</option>
+                            <option value="6" <eq name="$list['jkzkm']" value="9">selected</eq>>残疾</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="form-item">
+				<div>					
+					<label class="item-label">婚姻状况</label>
+					<div class="input-group">
+						<span class="input-group-addon glyphicon glyphicon-time"></span>
+						<select class="form-control" name="hyzkm" disabled="disabled">
+                            <option value="1" <eq name="$list['hyzkm']" value="1">selected</eq>>未婚</option>
+                            <option value="2" <eq name="$list['hyzkm']" value="2">selected</eq>>已婚</option>
+                            <option value="3" <eq name="$list['hyzkm']" value="3">selected</eq>>丧偶</option>
+                            <option value="4" <eq name="$list['hyzkm']" value="4">selected</eq>>离婚</option>
+                            <option value="9" <eq name="$list['hyzkm']" value="9">selected</eq>>其他</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<button type="submit" class="btn btn-default submit-btn ajax-post" target-form="form-horizontal">修改</button>
+            <button class="btn btn-default btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+			<br/>
+    

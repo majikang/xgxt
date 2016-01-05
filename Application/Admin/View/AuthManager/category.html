@@ -1,0 +1,101 @@
+<!-- 分类授权编辑页面 -->
+<extend name="Public/base" />
+<block name="body">
+<div class="tab-wrap">
+    <!-- 表格列表 -->
+    <div class="tb-unit posr">
+        <form class="save-category" action="{:U('AuthManager/addToClass')}" method="post" enctype="application/x-www-form-urlencoded">
+            <input type="hidden" name="uid" value="{:I('uid')}">
+           
+                	<div class="table-responsive my-notice-table">
+					    <table class="table table-bordered table-hover">
+                		   {:R('AuthManager/tree', array($group_list))}
+                	    </table>
+                	</div>
+            </div>
+
+            <div class="tb-unit-bar">
+                <button class="btn btn-default submit-btn ajax-post" type="submit" target-form="save-category">确 定</button>
+                <button class="btn btn-default btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /表格列表 -->
+</block>
+<block name="script">
+
+
+	<script type="text/javascript">
+
+			var a="."+{$list.id};
+			$(function()}{ 
+			$(a).on("click",function(){ 
+			alert(5345634);
+			//$(".a{$list.id}").slideToggle();
+		});
+	});
+	
+
+
+
+
+    +function($){
+        /* 分类展开收起 */
+        $(".category dd").prev().find(".fold i").addClass("icon-unfold")
+            .click(function(){
+                var self = $(this);
+                if(self.hasClass("icon-unfold")){
+                    self.closest("dt").next().slideUp("fast", function(){
+                        self.removeClass("icon-unfold").addClass("icon-fold");
+                    });
+                } else {
+                    self.closest("dt").next().slideDown("fast", function(){
+                        self.removeClass("icon-fold").addClass("icon-unfold");
+                    });
+                }
+            });
+
+        var auth_groups = [{$authed_group}];
+        $('.cate_id').each(function(){
+            if( $.inArray( parseInt(this.value,10),auth_groups )>-1 ){
+                $(this).prop('checked',true);
+            }
+        });
+	    $('select[name=group]').change(function(){
+		    location.href = this.value;
+	    });
+    }(jQuery);
+    //导航高亮
+    highlight_subnav('{:U('AuthManager/index')}');
+</script>
+<script>
+    $(".authMngr-fahr-checkbox input[type='checkbox']").on("click", function () {
+        var isChecked = $(this).is(":checked");
+        $(this).closest("dt.authMngr-fahr-checkbox").
+                next("dd").
+                find("input[type='checkbox']").
+                prop("checked", isChecked);
+    });
+    
+    $(".authMngr-son-checkbox input[type='checkbox']").on("click", function () {
+        var $closestDD = $(this).closest("dd"),
+            allSonCheckbox = $closestDD.find("input[type='checkbox']"),
+            isChecked = false,
+            temp;
+
+        $.each(allSonCheckbox, function (key, value) {
+            temp = $(value).is(":checked");
+            if (temp === true){
+                isChecked = temp;
+            } 
+        });
+
+        $closestDD.
+                prev("dt").
+                find("input[type='checkbox']").
+                prop("checked", isChecked);
+    });
+
+</script>
+</block>

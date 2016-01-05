@@ -1,0 +1,112 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>系统设置</h2>
+	</div>
+	<div class="tab-wrap">
+		<ul class="nav nav-tabs" role="tablist">
+			<li <eq name="id" value="1">class="active"</eq>>
+				<a href="{:U('?id=1')}">学期配置</a>
+			</li>
+			<li <eq name="id" value="2">class="active"</eq>>
+				<a href="{:U('?id=2')}">学校配置</a>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<form action="{:U('save')}" method="post" class="form-horizontal form-inline">
+				<br/>
+				<eq name="id" value="1">
+					<div class="form-item">
+						<label>{$list[0]['title']}</label>
+						<div class="input-group">
+								<span class="input-group-addon glyphicon glyphicon-time"></span>
+								<input type="text" class="form-control" name="config[{$list[0]['name']}]" value="{$list[0]['value']}">
+						</div>
+					</div>
+					<br/>
+					<div class="form-item">
+						<div>					
+							<label class="item-label">{$list[1]['title']}</label>
+							<div class="input-group">
+									<span class="input-group-addon glyphicon glyphicon-time"></span>
+									<select class="form-control" name="config[{$list[1]['name']}]">
+										  <option value="春季学期" 
+										  <eq name="list[1]['value']" value="春季学期">selected</eq>>春季学期
+										  </option>
+
+										  <option value="秋季学期" 
+										  <eq name="list[1]['value']" value="秋季学期">selected</eq>>秋季学期
+										  </option>
+									</select>
+							</div>
+						</div>
+					</div>
+					<br/>
+					<div class="form-item">
+						<label class="item-label">{$list[2]['title']}</label>
+						<div class="input-group">
+								<span class="input-group-addon glyphicon glyphicon-time"></span>
+								<input type="date" class="form-control text input-large" name="config[{$list[2]['name']}]" value="{$list[2]['value']}">
+						</div>
+					</div>
+					<br/>
+					<div class="form-item">
+						<label class="item-label">{$list[3]['title']}</label>
+						<div class="input-group">
+								<span class="input-group-addon glyphicon glyphicon-time"></span>
+								<input type="date" class="form-control text input-large" name="config[{$list[3]['name']}]" value="{$list[3]['value']}">
+						</div>
+					</div>
+				    <br/>
+					<div class="form-item">
+						<div>					
+							<label class="item-label">{$list[4]['title']}</label>
+							<div class="input-group">
+									<span class="input-group-addon glyphicon glyphicon-off"></span>
+									<select class="form-control" name="config[{$list[4]['name']}]">
+										  <option value="1" <eq name="list[4]['value']" value="1">selected</eq>>开启
+										  </option>
+										  <option value="0" <eq name="list[4]['value']" value="0">selected</eq>>关闭
+										  </option>
+									</select>
+							</div>
+						</div>
+					</div>
+				</eq>
+				<br/>
+				<eq name="id" value="2">
+					<div class="form-item">
+						<label>{$list[0]['title']}</label>
+						<div class="input-group">
+								<span class="input-group-addon glyphicon glyphicon-user"></span>
+								<input type="text" class="form-control" name="config[{$list[0]['name']}]" value="{$list[0]['value']}">
+						</div>
+					</div>
+					<br/>
+					<div class="form-item">
+						<label>{$list[1]['title']}</label>
+						<div class="input-group">
+								<span class="input-group-addon glyphicon glyphicon-user"></span>
+								<input type="text" class="form-control"  name="config[{$list[1]['name']}]" value="{$list[1]['value']}">
+						</div>
+					</div>
+				</eq>
+
+				<div class="form-item">
+					<label class="item-label"></label>
+					<div class="controls">
+						<button type="submit" class="btn submit-btn ajax-post btn-default" target-form="form-horizontal">确认
+						</button>
+						<button type="button" class="btn btn-default" onclick="javascript:history.back(-1);return false;">重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+
+</block>

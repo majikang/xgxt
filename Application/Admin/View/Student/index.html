@@ -1,0 +1,94 @@
+<extend name="Public/base"/>
+<block name="body">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>
+		学生列表({$_total}) 
+		<notempty name="rightNav">
+		<volist name="rightNav" id="nav">
+		{$nav.title}
+		<if condition="count($rightNav) gt $i"><i class="ca"></i></if>
+			</volist>
+			<present name="article">：<a href="{:U('index','cate_id='.$cate_id.'&pid='.$article['id'])}">{$article.title}</a></present>
+			</if>
+		</notempty>
+		</h2>
+	</div>
+	<div class="cf">
+		<div class="fl">
+			<!--班级选项-->
+				<include file="ztree" />	
+		</div>
+		<!-- 高级搜索 -->
+		<div class="sleft search-type">
+			<div class="form-group has-success has-feedback">
+			  <input type="text" value="{:I('name')}" name="name" class="form-control serach-input-type"  placeholder="请输入姓名或者学号">
+			  <input type="hidden" name="cate_id" value="{:I('cate_id')}">
+			  <a class="sch-btn" href="javascript:;" id="xgxt-search-box" url="{:U('index')}"><span class="glyphicon glyphicon-search form-control-feedback"></span></a>
+			</div>
+		</div>
+    </div>
+	
+		<br/>
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table class="table table-bordered table-hover table-responsive">
+            <!-- 表头 -->
+            <thead>
+                <tr class="info">
+                    <td class="my-notice-table">
+                        <input class="check-all" type="checkbox">
+                    </td>
+                    <volist name="list_grids" id="field">
+                        <td>{$field.title}</td>
+                    </volist>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+                        <volist name="list_grids" id="grid">
+                            <td>{:get_list_field($data,$grid)}</td>
+                        </volist>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+	</div>
+	<!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</div>
+
+</block>
+<block name="script">
+<link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+<php>if(C('COLOR_STYLE')=='blue_color') echo '<link href="__STATIC__/datetimepicker/css/datetimepicker_blue.css" rel="stylesheet" type="text/css">';</php>
+<link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	//回车搜索
+	$(".serach-input-type").keyup(function(e){
+		if(e.keyCode === 13){
+		var url = $("#xgxt-search-box").attr('url');
+		 	var query  = $('.search-type').find('input').serialize();
+	        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+	        query = query.replace(/^&/g,'');
+	        if( url.indexOf('?')>0 ){
+	            url += '&' + query;
+	        }else{
+	            url += '?' + query;
+	        }
+			window.location.href = url;
+			return false;
+		}
+	});
+    //导航高亮
+    highlight_subnav('{:U('User/index')}');
+</script>
+</block>

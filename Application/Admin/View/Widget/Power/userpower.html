@@ -1,0 +1,9 @@
+<label class="item-label">选择需要分配的角色</label></br>
+                <select name="group_id">
+                <option class="auth_groups" value="0">无</option>
+                    <volist name="auth_groups" id="vo">
+                        <option class="auth_groups" value="{$vo.id}">{$vo.title}</option>
+                    </volist>
+                </select>
+            <input type="hidden" name="batch" value="true">
+        <div class="form-item">

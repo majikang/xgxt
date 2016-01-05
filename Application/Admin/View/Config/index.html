@@ -1,0 +1,173 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="main-title">
+		<h2>配置管理 [ <present name="Think.get.group">
+
+
+
+         <a href="{:U('index')}">全部</a><else/><strong>全部</strong></present>&nbsp;
+         <foreach name="group" item="vo">
+			<neq name="group_id" value="$key">
+         		<a href="{:U('index?group='.$key)}">{$vo}</a><else/><strong>{$vo}</strong></neq>&nbsp;     
+        </foreach> ]</h2>
+
+
+        		<div>
+					<ul class="nav nav-tabs" role="tablist">
+					<foreach name="group" item="vo">
+						<neq name="group_id" value="$key">
+							<li role="presentation" >
+	  							<a href="#tab{$key}" role="tab" data-toggle="tab">{$vo}</a>
+	  						</li>
+  						<else/>
+			         		<li role="presentation" class="active">
+	  							<a href="#tab{$key}" role="tab" data-toggle="tab">{$vo}</a>
+	  						</li>
+  						</neq>
+  						 </foreach>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						  <div role="tabpanel" class="tab-pane active" id="tab1">
+						  	
+
+
+						  </div>
+						  
+
+					</div>
+				</div>
+	</div>
+
+
+	<div class="btn-group">
+	    <button type="button" class="btn btn-default" ><a href="{:U('add')}">新增</a></button>
+	    <button type="button" class="btn btn-default"><a href="javascript:;">删除</a></button>
+	    <button type="button" class="btn btn-default" url="{:U('sort?group='.I('group'),'','')}">排序</button>
+	</div>
+	<div class="sleft">
+		<div class="form-group has-success has-feedback">
+		  <input type="text" value="{:I('name')}" name="name" class="form-control search-input" id="inputSuccess2"  placeholder="请输入配置名称"><a class="sch-btn" href="javascript:;" id="search" url="{:U('config/index')}"></span></a>
+		  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+		</div>
+
+
+		<!--原先的
+		<input type="text" name="name" class="search-input" value="{:I('name')}" placeholder="请输入配置名称">
+		<a class="sch-btn" href="javascript:;" id="search" url="{:U('config/index')}"><span class="glyphicon glyphicon-search"></span></a>
+		-->
+	</div>
+	<br/>
+	<br/>
+	
+
+					<div class="table-responsive my-notice-table">
+					  <table class="table table-bordered table-hover">
+					    <thead>
+						    <tr class="info">
+						        <td><input class="check-all" type="checkbox"/></td>
+							    <td>ID</td>
+							    <td>名称</td>
+								<td>标题</td>
+								<td>分组</td>
+								<td>类型</td>
+								<td>操作</td>
+						    </tr>
+					    </thead>
+					    <tbody>
+					    	<notempty name="list">
+							<volist name="list" id="config">
+						    <tr>
+							    <td>
+							    	<input class="ids row-selected" type="checkbox" name="id[]" value="{$config.id}">
+							    </td>
+							    <td>
+							    	{$config.id}
+							    </td>
+							    <td>
+							    	{$config.name}
+							    </td>
+							    <td>
+							    	<a data-id="{$vo.id}" href="{:U('model/edit?id='.$vo['id'])}">
+							    		{$config.title}
+							    	</a>
+							    </td>
+					    		<td>
+					    			{$config.group|get_config_group}
+					    		</td>
+					    		<td>
+					    			{$config.type|get_config_type}
+					    		</td>
+					    		<td>
+					    			<button type="button" class="btn btn-default" >
+					    				<a title="编辑" href="{:U('edit?id='.$config['id'])}">
+					    					编辑
+					    				</a>
+					    			</button>
+									<button type="button" class="btn btn-default" >
+									<a class="confirm ajax-get" title="删除" href="{:U('del?id='.$config['id'])}">
+										删除
+									</a>
+									</button>
+								</td>					    
+							  </tr>
+							 
+							</volist>
+						<else/>
+						<td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+						</notempty>
+					    </tbody>
+					  </table>
+					  </table>
+							<!-- 分页 -->
+						    <div class="page">
+						        {$_page}
+						    </div>
+					</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(function(){
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+	//点击排序
+	$('.list_sort').click(function(){
+		var url = $(this).attr('url');
+		var ids = $('.ids:checked');
+		var param = '';
+		if(ids.length > 0){
+			var str = new Array();
+			ids.each(function(){
+				str.push($(this).val());
+			});
+			param = str.join(',');
+		}
+
+		if(url != undefined && url != ''){
+			window.location.href = url + '/ids/' + param;
+		}
+	});
+});
+</script>
+</block>

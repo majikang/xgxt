@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>审批</title>
+	<meta charset='utf-8'>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" href="__ROOT__/Addons/wxqj/Public/css/bootstrap.min.css">
+	<link rel="stylesheet" href="__ROOT__/Addons/wxqj/Public/css/style.css">
+</head>
+<body class="wechatHoli">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button class="btn btn-default btn-xs navbar-btn my-wechatHoli-returnBtn" type="button">
+					<a href="{:addons_url('Wxqj://Wxqj/TecIndex')}">返回</a>
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="my-wechatHoli-content">
+		<form action="{:addons_url('Wxqj://Wxqj/TecDetailForm')}" method="post" role="form">
+			<volist name="list" id="data">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<h5 class="list-group-item-heading">学生姓名：</h4>
+					<p class="list-group-item-text">
+						{$data['wxqj_name']} 
+					</p>
+				</li>
+				<li class="list-group-item">
+					<h5 class="list-group-item-heading">请假时间:</h4>
+					<p class="list-group-item-text">
+						{$data['wxqj_kssj']}—{$data['wxqj_jssj']}
+					</p>
+				</li>
+				<li class="list-group-item">
+					<h5 class="list-group-item-heading">请假类型:</h4>
+					<p class="list-group-item-text">
+						<?php
+					switch ($data['wxqj_qjlb']) {
+					case '1':
+						echo "事假";
+						break;
+					case '2':
+						echo "病假";
+						break;	
+					}
+					?>
+					</p>
+				</li>
+				<li class="list-group-item">
+					<h5 class="list-group-item-heading">请假事由:</h4>
+					<p class="list-group-item-text">
+						{$data['wxqj_qjsy']}
+					</p>
+				</li>
+			</ul>
+			
+			<div class="form-group text-right">
+				<button type="submit" class="btn btn-danger btn-xs" name="submit1" value="{$data['wxqj_id']}">不允许</button>
+				<button type="submit" class="btn btn-success btn-xs" name="submit2" value="{$data['wxqj_id']}">允许</button>
+			</div>
+			</volist>
+		</form>	
+	</div>
+	<script src="__ROOT__/Addons/wxqj/Public/js/lib/require.js" data-main="__ROOT__/Addons/wxqj/Public/js/common"></script>
+</body>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>审批</title>
+	<meta charset='utf-8'>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/style.css">
+</head>
+<body class="wechatHoli">
+	<div class="panel panel-primary my-wechatHoli-content">
+		<div class="panel-heading">
+			审批
+			<a href="javascript:history.back()" class="btn btn-primary btn-xs my-wechatHoli-returnBtn" role="button">返回</a>
+		</div>
+		
+		<div class="panel-body">
+			<form action="U{:'TecDetail'}" method="post">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">请假时间</h4>
+						<p class="list-group-item-text">
+							{$data['wxqj_kssj']}—{$data['wxqj_jssj']} 
+						</p>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">请假类型</h4>
+						<p class="list-group-item-text">
+							123123
+						</p>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">请假事由</h4>
+						<p class="list-group-item-text">
+							123123
+						</p>
+					</li>
+				</ul>
+				<div class="form-group text-right">
+					<button type="submit" class="btn btn-danger" value="0">不允许</button>
+					<button type="submit" class="btn btn-success" value="1">允许</button>
+				</div>
+			</form>
+		 </div>	
+	</div>
+</body>

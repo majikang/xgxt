@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>请假申请</title>
+	<meta charset='utf-8'>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="format-detection" content="email=no">
+	<link rel="stylesheet" href="__CSS__/bootstrap.min.css">
+	<link rel="stylesheet" href="__CSS__/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" href="__CSS__/style.css">
+</head>
+<body>	
+	<div class="panel panel-primary my-wechatHoli-content">	
+		<div class="panel-heading">	
+			请假申请
+			<a href="javascript:history.back()" class="btn btn-primary btn-xs my-wechatHoli-returnBtn" role="button">返回</a>
+		</div>	
+		<div style="color:red;text-align:center">{$error.xiaojia}{$error.dianhua}{$error.today}</div>
+		<div class="panel-body">
+			<form action="{:U('StuFormHandle')}" method="post" role="form">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">开始时间：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+					            <div class="input-group date form_datetime">
+					                <input class="form-control my-wecharHoli-formDatetimeBg" id="timeBg" type="text" name="wxqj_kssj" data-link-field="timeBg" readonly>
+					                <span class="input-group-addon my-dataPikrRm">
+					                	<span class="glyphicon glyphicon-remove"></span>
+					                </span>
+					            </div>
+					        </div>	
+						</div>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">结束时间：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+					            <div class="input-group date form_datetime">
+					                <input class="form-control my-wecharHoli-formDatetimeEd" id="timeEd" type="text" name="wxqj_jssj" data-link-field="timeEd" readonly>
+					                <span class="input-group-addon my-dataPikrRm">
+					                	<span class="glyphicon glyphicon-remove"></span>
+					                </span>
+					            </div>
+					        </div>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">请假类型：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+								<div class="radio">
+									<label class="radio-inline">
+										<input type="radio" name="wxqj_qjlb" value="1" checked>
+										事假
+									</label>
+								</div>
+								<div class="radio">
+									<label class="radio-inline">
+										<input type="radio" name="wxqj_qjlb" value="2" checked>
+										病假
+									</label>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">家长是否知情：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+								<div class="radio">
+									<label class="radio-inline">
+										<input type="radio" name="wxqj_jzyj" value="1" checked>
+										 家长知情
+									</label>
+								</div>
+								<div class="radio">
+									<label class="radio-inline">
+										<input type="radio" name="wxqj_jzyj" value="0" checked>
+										家长不知情
+									</label>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">紧急联系人姓名：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+							    <input class="form-control input-sm" type="text" name="wxqj_jjlxr">
+							</div>
+						</div>
+					</li>
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">紧急联系人电话：</h5>
+						<div class="list-group-item-text">
+							<div class="form-group">
+							    <input class="form-control input-sm" type="text" name="wxqj_jjlxrdh">
+							</div>
+						</div>
+					</li>
+					
+					<li class="list-group-item">
+						<h5 class="list-group-item-heading">请假事由：</h5>
+						<div class="list-group-item-text">
+							<textarea class="form-control" rows="2" name="wxqj_qjsy"></textarea>
+						</div>
+					</li>
+				</ul>
+				<div class="form-group text-right">
+					<button class="btn btn-primary " type="submit" <?php if (in_array("",$error)||in_array("false",$error)){echo "disabled";}?>>提交</button>
+
+				</div>
+			</form>
+		</div>
+	</div>	
+	<script src="__JS__/lib/require.js" data-main="__JS__/common"></script>
+</body>

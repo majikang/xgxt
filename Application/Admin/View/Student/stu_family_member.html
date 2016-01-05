@@ -1,0 +1,35 @@
+<extend name="Public/base" />
+
+<!-- 子导航 -->
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+
+<block name="body">
+<!-- 数据表格 -->
+<div class="main-title">
+		<h2>
+		家庭成员
+		</h2>
+	</div>
+    <div class="data-table table-responsive my-notice-table">
+		<table class="table table-bordered table-hover">
+		<tr class="info">
+			<td>姓名</td>
+			<td>与本人的关系</td>
+			<td>工作单位</td>
+			<td>联系电话</td>
+			<td>移动电话</td>
+		</tr>
+		 <volist name="list" id="data">
+		   <tr>
+            <td>{$data.xm}</td>>
+            <td>{$data.gxm}</td>>
+            <td>{$data.dwmc}</td>>
+            <td>{$data.lxdh}</td>>
+            <td>{$data.xbsjhm}</td>>
+           </tr>
+          </volist>
+        </table>
+	</div>
+</block>
